@@ -1,0 +1,80 @@
+.PopupButton.ShowWithTabbar {
+	animation: moveForwardWithTabbar 1s 1 both;
+}
+
+.PopupButton.HideWithTabbar {
+	animation: moveBackwardWithTabbar 1s 1 both;
+}
+
+.PopupButton.Show {
+	animation: moveForward 1s 1 both;
+}
+
+.PopupButton.Hide {
+	animation: moveBackward 1s 1 both;
+}
+
+.PopupButton {
+	position: fixed;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	z-index: 2;
+}
+
+@keyframes moveForwardWithTabbar {
+	from {
+		bottom: calc(-1 * var(--tabbar_height));
+	}
+	,
+	50% {
+		bottom: calc(var(--tabbar_height) / 2);
+	}
+
+	to {
+		bottom: calc(var(--tabbar_height) + 5px);
+	}
+}
+
+@keyframes moveBackwardWithTabbar {
+	to {
+		bottom: calc(-1 * var(--tabbar_height));
+	}
+	,
+	50% {
+		bottom: calc(var(--tabbar_height) / 2);
+	}
+
+	from {
+		bottom: calc(var(--tabbar_height) + 5px);
+	}
+}
+
+@keyframes moveForward {
+	from {
+		bottom: calc(-1 * var(--tabbar_height));
+	}
+	,
+	50% {
+		bottom: 0;
+	}
+
+	to {
+		bottom: 5px;
+	}
+}
+
+@keyframes moveBackward {
+	to {
+		bottom: calc(-1 * var(--tabbar_height));
+	}
+	,
+	50% {
+		bottom: 0;
+	}
+
+	from {
+		bottom: 5px;
+	}
+}
