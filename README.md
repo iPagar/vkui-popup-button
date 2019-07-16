@@ -11,26 +11,46 @@ vkui-popup-button – это React-компонент, позволяющий с
 ```jsx static
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { View, Panel, PanelHeader, Group, List, Cell } from '@vkontakte/vkui'
-import PopupButon from 'vkui-popup-button'
+import {
+	View,
+	Panel,
+	PanelHeader,
+	FixedLayout,
+	Tabs,
+	TabsItem,
+	HorizontalScroll
+} from '@vkontakte/vkui'
 import '@vkontakte/vkui/dist/vkui.css'
+import Icon24Up from '@vkontakte/icons/dist/24/up'
+import PopupButton from '../src/PopupButton.js'
 
-function App() {
+const ParentWrapper = () => {
 	return (
-		<View activePanel="main">
-			<Panel id="main">
-				<PanelHeader>VKUI</PanelHeader>
-				<Group title="Items">
-					<List>
-						<Cell>Hello</Cell>
-						<Cell>World</Cell>
-					</List>
-				</Group>
-				<PopupButton onClick={() => console.log('На меня нажали')}>Нажми на меня!</PopupButton>
+		<View activePanel="panel">
+			<Panel id="panel">
+				<PanelHeader>Panel Header</PanelHeader>
+				<FixedLayout vertical="top">
+					<Tabs theme="header" type="buttons">
+						<HorizontalScroll>
+							<TabsItem selected>Все</TabsItem>
+							<TabsItem>Люди</TabsItem>
+							<TabsItem>Сообщества</TabsItem>
+						</HorizontalScroll>
+					</Tabs>
+				</FixedLayout>
+				<PopupButton
+					before={<Icon24Up />}
+					onBeforeClick={() => console.log('Before clicked!')}
+					hastabbar
+					type={'header'}
+					removable
+				>
+					Кнопка
+				</PopupButton>
 			</Panel>
 		</View>
 	)
 }
 
-ReactDOM.render(<App />, document.getElementById('root'))
+ReactDOM.render(<ParentWrapper />, document.getElementById('root'))
 ```

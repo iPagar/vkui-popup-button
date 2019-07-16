@@ -1,9 +1,57 @@
+.PopupButton.ShowWithTabbarFromHeaderIOS {
+	animation: moveForwardWithTabbarFromHeaderIOS 1s 1 both;
+}
+
+.PopupButton.HideWithTabbarFromHeaderIOS {
+	animation: moveBackwardWithTabbarFromHeaderIOS 1s 1 both;
+}
+
+.PopupButton.ShowWithTabbarFromHeader {
+	animation: moveForwardWithTabbarFromHeader 1s 1 both;
+}
+
+.PopupButton.HideWithTabbarFromHeader {
+	animation: moveBackwardWithTabbarFromHeader 1s 1 both;
+}
+
+.PopupButton.ShowFromHeaderIOS {
+	animation: moveForwardFromHeaderIOS 1s 1 both;
+}
+
+.PopupButton.HideFromHeaderIOS {
+	animation: moveBackwardFromHeaderIOS 1s 1 both;
+}
+
+.PopupButton.ShowFromHeader {
+	animation: moveForwardFromHeader 1s 1 both;
+}
+
+.PopupButton.HideFromHeader {
+	animation: moveBackwardFromHeader 1s 1 both;
+}
+
+.PopupButton.ShowWithTabbarIOS {
+	animation: moveForwardWithTabbar 1s 1 both;
+}
+
+.PopupButton.HideWithTabbarIOS {
+	animation: moveBackwardWithTabbar 1s 1 both;
+}
+
 .PopupButton.ShowWithTabbar {
 	animation: moveForwardWithTabbar 1s 1 both;
 }
 
 .PopupButton.HideWithTabbar {
 	animation: moveBackwardWithTabbar 1s 1 both;
+}
+
+.PopupButton.ShowIOS {
+	animation: moveForward 1s 1 both;
+}
+
+.PopupButton.HideIOS {
+	animation: moveBackward 1s 1 both;
 }
 
 .PopupButton.Show {
@@ -76,5 +124,117 @@
 
 	from {
 		bottom: 5px;
+	}
+}
+
+@keyframes moveForwardFromHeaderIOS {
+	from {
+		top: -44px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	to {
+		top: calc(44px + 5px);
+	}
+}
+
+@keyframes moveBackwardFromHeaderIOS {
+	to {
+		top: -44px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	from {
+		top: calc(44px + 5px);
+	}
+}
+
+@keyframes moveForwardFromHeader {
+	from {
+		top: -56px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	to {
+		top: calc(56px + 5px);
+	}
+}
+
+@keyframes moveBackwardFromHeader {
+	to {
+		top: -56px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	from {
+		top: calc(56px + 5px);
+	}
+}
+
+@keyframes moveForwardWithTabbarFromHeaderIOS {
+	from {
+		top: -44px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	to {
+		top: calc(calc(44px + var(--tabbar_height)) + 5px);
+	}
+}
+
+@keyframes moveBackwardWithTabbarFromHeaderIOS {
+	to {
+		top: -44px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	from {
+		top: calc(calc(44px + var(--tabbar_height)) + 5px);
+	}
+}
+
+@keyframes moveForwardWithTabbarFromHeader {
+	from {
+		top: -56px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	to {
+		top: calc(calc(56px + var(--tabbar_height)) + 5px);
+	}
+}
+
+@keyframes moveBackwardWithTabbarFromHeader {
+	to {
+		top: -56px;
+	}
+	,
+	50% {
+		top: 0;
+	}
+
+	from {
+		top: calc(calc(56px + var(--tabbar_height)) + 5px);
 	}
 }

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Button, getClassName } from '@vkontakte/vkui'
+import { Button, IS_PLATFORM_IOS } from '@vkontakte/vkui'
 import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss'
 import './PopupButton.css'
 import '@vkontakte/vkui/dist/vkui.css'
@@ -8,7 +8,8 @@ class PopupButton extends React.Component {
   state = { isVisible: false }
 
   static defaultProps = {
-    level: 'primary'
+    level: 'primary',
+    type: 'footer'
   }
 
   onClick = () => {
@@ -21,11 +22,11 @@ class PopupButton extends React.Component {
 
   getPopupButtonClassNames = () => {
     const { isVisible } = this.state
-    const { hastabbar } = this.props
+    const { hastabbar, type } = this.props
 
-    const classes = isVisible
-      ? `Show${hastabbar ? 'WithTabbar' : ''}`
-      : `Hide${hastabbar ? 'WithTabbar' : ''}`
+    const classes = `${isVisible ? 'Show' : 'Hide'}${hastabbar ? 'WithTabbar' : ''}${
+      type === 'header' ? 'FromHeader' : ''
+    }${IS_PLATFORM_IOS ? 'IOS' : ''}`
 
     return classes
   }
@@ -36,18 +37,30 @@ class PopupButton extends React.Component {
 
   render() {
     const { isVisible } = this.state
-    const { className, children, level, ...restProps } = this.props
+    const { className, children, level, removable, before, onBeforeClick } = this.props
 
     return (
       <div className={`PopupButton ${this.getPopupButtonClassNames()}`}>
         <Button
-          {...restProps}
           level={level}
           onClick={this.onClick}
-          after={
-            <div onClick={this.onDismissClick}>
-              <Icon24Dismiss />
+          before={
+            <div
+              style={{ marginLeft: -11, marginRight: -4 }}
+              onClick={() => {
+                onBeforeClick()
+                this.onDismissClick()
+              }}
+            >
+              {before}
             </div>
+          }
+          after={
+            removable ? (
+              <div style={{ marginRight: -15 }} onClick={this.onDismissClick}>
+                <Icon24Dismiss />
+              </div>
+            ) : null
           }
         >
           {children}

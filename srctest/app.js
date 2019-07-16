@@ -1,20 +1,43 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import MyComponent from '../src/PopupButton.js'
+import {
+  View,
+  Panel,
+  PanelHeader,
+  FixedLayout,
+  Tabs,
+  TabsItem,
+  HorizontalScroll
+} from '@vkontakte/vkui'
+import '@vkontakte/vkui/dist/vkui.css'
+import Icon24Up from '@vkontakte/icons/dist/24/up'
+import PopupButton from '../src/PopupButton.js'
 
 const ParentWrapper = () => {
   return (
-    <div
-      style={{
-        display: 'flex',
-        justifyContent: 'center',
-        width: '100%',
-        height: '100vh',
-        alignItems: 'center'
-      }}
-    >
-      <MyComponent />
-    </div>
+    <View activePanel="panel">
+      <Panel id="panel">
+        <PanelHeader>Panel Header</PanelHeader>
+        <FixedLayout vertical="top">
+          <Tabs theme="header" type="buttons">
+            <HorizontalScroll>
+              <TabsItem selected>Все</TabsItem>
+              <TabsItem>Люди</TabsItem>
+              <TabsItem>Сообщества</TabsItem>
+            </HorizontalScroll>
+          </Tabs>
+        </FixedLayout>
+        <PopupButton
+          before={<Icon24Up />}
+          onBeforeClick={() => console.log('Before clicked!')}
+          hastabbar
+          type={'header'}
+          removable
+        >
+          Кнопка
+        </PopupButton>
+      </Panel>
+    </View>
   )
 }
 
