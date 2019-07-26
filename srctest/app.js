@@ -30,8 +30,6 @@ const ParentWrapper = () => {
         <PopupButton
           before={<Icon24Up />}
           onBeforeClick={() => console.log('Before clicked!')}
-          hastabbar
-          type={'header'}
           removable
         >
           Кнопка
