@@ -129,7 +129,7 @@
 
 @keyframes moveForwardFromHeaderIOS {
 	from {
-		top: -44px;
+		top: calc(-1 * var(--panelheader_height_ios));
 	}
 	,
 	50% {
@@ -137,13 +137,13 @@
 	}
 
 	to {
-		top: calc(44px + 5px);
+		top: calc(var(--panelheader_height_ios) + 5px);
 	}
 }
 
 @keyframes moveBackwardFromHeaderIOS {
 	to {
-		top: -44px;
+		top: calc(-1 * var(--panelheader_height_ios));
 	}
 	,
 	50% {
@@ -151,13 +151,13 @@
 	}
 
 	from {
-		top: calc(44px + 5px);
+		top: calc(var(--panelheader_height_ios) + 5px);
 	}
 }
 
 @keyframes moveForwardFromHeader {
 	from {
-		top: -56px;
+		top: calc(-1 * var(--panelheader_height_android));
 	}
 	,
 	50% {
@@ -165,13 +165,13 @@
 	}
 
 	to {
-		top: calc(56px + 5px);
+		top: calc(var(--panelheader_height_android) + 5px);
 	}
 }
 
 @keyframes moveBackwardFromHeader {
 	to {
-		top: -56px;
+		top: calc(-1 * var(--panelheader_height_android));
 	}
 	,
 	50% {
@@ -179,13 +179,13 @@
 	}
 
 	from {
-		top: calc(56px + 5px);
+		top: calc(var(--panelheader_height_android) + 5px);
 	}
 }
 
 @keyframes moveForwardWithTabbarFromHeaderIOS {
 	from {
-		top: -44px;
+		top: calc(-1 * var(--panelheader_height_ios));
 	}
 	,
 	50% {
@@ -193,13 +193,13 @@
 	}
 
 	to {
-		top: calc(calc(44px + var(--tabbar_height)) + 5px);
+		top: calc(calc(var(--panelheader_height_ios) + var(--tabbar_height)) + 5px);
 	}
 }
 
 @keyframes moveBackwardWithTabbarFromHeaderIOS {
 	to {
-		top: -44px;
+		top: calc(-1 * var(--panelheader_height_ios));
 	}
 	,
 	50% {
@@ -207,13 +207,13 @@
 	}
 
 	from {
-		top: calc(calc(44px + var(--tabbar_height)) + 5px);
+		top: calc(calc(var(--panelheader_height_ios) + var(--tabbar_height)) + 5px);
 	}
 }
 
 @keyframes moveForwardWithTabbarFromHeader {
 	from {
-		top: -56px;
+		top: calc(-1 * var(--panelheader_height_android));
 	}
 	,
 	50% {
@@ -221,13 +221,13 @@
 	}
 
 	to {
-		top: calc(calc(56px + var(--tabbar_height)) + 5px);
+		top: calc(calc(var(--panelheader_height_android) + var(--tabbar_height)) + 5px);
 	}
 }
 
 @keyframes moveBackwardWithTabbarFromHeader {
 	to {
-		top: -56px;
+		top: calc(-1 * var(--panelheader_height_android));
 	}
 	,
 	50% {
@@ -235,6 +235,6 @@
 	}
 
 	from {
-		top: calc(calc(56px + var(--tabbar_height)) + 5px);
+		top: calc(calc(var(--panelheader_height_android) + var(--tabbar_height)) + 5px);
 	}
 }

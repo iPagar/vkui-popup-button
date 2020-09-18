@@ -2,55 +2,39 @@
 
 vkui-popup-button – это React-компонент, позволяющий создавать всплывающие кнопки.
 
-## Установка
+### Установка
 
 `npm i vkui-popup-button`
 
-## Пример использования
+### Скриншот
 
-```jsx static
-import React from 'react'
-import ReactDOM from 'react-dom'
-import {
-	View,
-	Panel,
-	PanelHeader,
-	FixedLayout,
-	Tabs,
-	TabsItem,
-	HorizontalScroll
-} from '@vkontakte/vkui'
-import '@vkontakte/vkui/dist/vkui.css'
-import Icon24Up from '@vkontakte/icons/dist/24/up'
-import PopupButton from '../src/PopupButton.js'
+![](https://i.ibb.co/x5z1Jzm/2020-09-18-050112.png)
 
-const ParentWrapper = () => {
-	return (
-		<View activePanel="panel">
-			<Panel id="panel">
-				<PanelHeader>Panel Header</PanelHeader>
-				<FixedLayout vertical="top">
-					<Tabs theme="header" type="buttons">
-						<HorizontalScroll>
-							<TabsItem selected>Все</TabsItem>
-							<TabsItem>Люди</TabsItem>
-							<TabsItem>Сообщества</TabsItem>
-						</HorizontalScroll>
-					</Tabs>
-				</FixedLayout>
-				<PopupButton
-					before={<Icon24Up />}
-					onBeforeClick={() => console.log('Before clicked!')}
-					hastabbar
-					type={'header'}
-					removable
-				>
-					Кнопка
-				</PopupButton>
-			</Panel>
-		</View>
-	)
-}
+### Пример использования
 
-ReactDOM.render(<ParentWrapper />, document.getElementById('root'))
-```
+    <PopupButton
+              before={<Icon24Up />}
+              onBeforeClick={() => {
+                setIsDisplayed(!isDisplayed)
+              }}
+              after={<Icon24Dismiss />}
+              onAfterClick={() => {
+                setIsDisplayed(!isDisplayed)
+              }}
+    		  onClick={() => console.log('Кнопка нажата!')}
+              hastabbar
+              type="header"
+              isVisible={isDisplayed}
+            >
+              Кнопка
+    </PopupButton>
+
+### Описание
+
+`before` - Node, который находитя до children(удобно для иконок)
+`onBeforeClick` - клик на ноде before
+`after` - компонент после children
+`onAfterClick` - событие onClick на компоненте after
+`hastabbar` - наличие таббара(нижнего или верхнего) на View
+`type` - где будет находится кнопка, один из `['footer', 'header]`
+`isVisible` - видимость кнопки(по умолчанию видмимость включена)

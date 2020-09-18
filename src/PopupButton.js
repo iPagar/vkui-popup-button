@@ -1,6 +1,5 @@
 import React from 'react'
 import { Button, IS_PLATFORM_IOS } from '@vkontakte/vkui'
-import Icon24Dismiss from '@vkontakte/icons/dist/24/dismiss'
 import './PopupButton.css'
 import '@vkontakte/vkui/dist/vkui.css'
 
@@ -12,16 +11,8 @@ class PopupButton extends React.Component {
 		type: 'footer'
 	}
 
-	onClick = () => {
-		const { onClick } = this.props
-	}
-
-	onDismissClick = () => {
-		this.setState({ isVisible: false })
-	}
-
 	getPopupButtonClassNames = () => {
-		const { isVisible } = this.state
+		const { isVisible } = this.props
 		const { hastabbar, type } = this.props
 
 		const classes = `${isVisible ? 'Show' : 'Hide'}${hastabbar ? 'WithTabbar' : ''}${
@@ -31,33 +22,39 @@ class PopupButton extends React.Component {
 		return classes
 	}
 
-	componentDidMount() {
-		this.setState({ isVisible: true })
-	}
-
 	render() {
-		const { isVisible } = this.state
-		const { className, children, level, removable, before, onBeforeClick } = this.props
+		const {
+			className,
+			children,
+			level,
+			isVisible,
+			before,
+			onBeforeClick,
+			onClick,
+			after,
+			onAfterClick
+		} = this.props
 
 		return (
 			<div className={`PopupButton ${this.getPopupButtonClassNames()}`}>
 				<Button
 					level={level}
-					onClick={this.onClick}
 					before={
-						<div style={{ marginLeft: -11, marginRight: -4 }} onClick={this.onDismissClick}>
-							{before}
-						</div>
+						before ? (
+							<div style={{ marginLeft: -11, marginRight: -4 }} onClick={onBeforeClick}>
+								{before}
+							</div>
+						) : null
 					}
 					after={
-						removable ? (
-							<div style={{ marginRight: -15 }} onClick={this.onDismissClick}>
-								<Icon24Dismiss />
+						after ? (
+							<div style={{ marginRight: -15 }} onClick={onAfterClick}>
+								{after}
 							</div>
 						) : null
 					}
 				>
-					{children}
+					<div onClick={onClick}>{children}</div>
 				</Button>
 			</div>
 		)
